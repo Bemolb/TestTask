@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function fetchUsers() {
 
-        fetch("https://localhost:7218/UserStorage")
+        fetch(`${document.getElementById("url").value}/UserStorage`)
             .then(response => response.json())
             .then(data => {
                 const tbody = usersTable.querySelector("tbody");
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
             Email: document.getElementById("email").value
         };
 
-        fetch("https://localhost:7218/UserStorage", {
+        fetch(`${document.getElementById("url").value}/UserStorage`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -53,7 +53,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     window.deleteUser = function (id) {
-        fetch(`https://localhost:7218/UserStorage?id=${id}`, {
+        fetch(`${document.getElementById("url").value}/UserStorage?id=${id}`, {
             method: "DELETE"
         })
             .then(() => {
@@ -92,7 +92,7 @@ document.addEventListener("DOMContentLoaded", function () {
             Email: row.querySelector(`td:nth-child(5) input`).value
         };
 
-        fetch(`https://localhost:7218/UserStorage?id=${id}`, {
+        fetch(`${document.getElementById("url").value}/UserStorage?id=${id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json"
